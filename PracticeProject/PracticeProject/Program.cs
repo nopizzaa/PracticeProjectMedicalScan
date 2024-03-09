@@ -1,8 +1,10 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllersWithViews();
+
+// Add the OpenApi generator to the services collection
+builder.Services.AddOpenApiDocument();
 
 var app = builder.Build();
 
@@ -17,6 +19,13 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+// Following middlewares are included for development mode only.
+if (app.Environment.IsDevelopment())
+{
+    // Add OpenAPI 3.0 and SwaggerUi serving middleware.
+    app.UseOpenApi();
+    app.UseSwaggerUi();
+}
 
 app.MapControllerRoute(
     name: "default",
