@@ -10,8 +10,8 @@ export class ProductService{
 
   fetchProducts(sort: Sort): Observable<Product[]> {
     const params = new HttpParams()
-      .set('_sort', sort.active)
-      .set('_order', sort.direction);
+      .set('Active', sort.active)
+      .set('Direction', sort.direction);
     return this.http.get<Product[]>(this.baseUrl + 'api/product', {params})
   }
 }
