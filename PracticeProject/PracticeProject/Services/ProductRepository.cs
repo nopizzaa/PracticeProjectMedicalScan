@@ -22,12 +22,50 @@ public class ProductRepository : IProductRepository
         return sortedProducts.ToList();
     }
 
-    public Product AddProduct(Product product)
+    public Guid AddProduct(Product product)
     {
-        product.Id = Guid.NewGuid();
+        Guid newId = Guid.NewGuid();
+        product.Id = newId;
+
+        product.Manufacturer = product.Manufacturer.Trim();
+        product.Name = product.Name.Trim();
+        product.Description = product.Description?.Trim();
 
         _products = _products.Append(product);
 
-        return _products.First(pro => pro.Equals(product));
+        return newId;
+    }
+
+    public void RemoveProduct(Guid productId)
+    {
+        if (!_products.Any(product => product.Id.Equals(productId)))
+            throw new ArgumentOutOfRangeException();
+        
+        _products = _products.Where(product => product.Id != productId);
+    }
+
+    public Product UpdateProduct(Product product)
+    {
+        if (!_products.Any(prod => prod.Id.Equals(product.Id)))
+            throw new ArgumentOutOfRangeException();
+        
+        product.Manufacturer = product.Manufacturer.Trim();
+        product.Name = product.Name.Trim();
+        product.Description = product.Description?.Trim();
+        
+        _products = _products.Where(prod => prod.Id != product.Id);
+        _products = _products.Append(product);
+
+        return product;
+    }
+
+    public Product GetProductById(Guid productId)
+    {
+        var product = _products.Single(prod => prod.Id.Equals(productId));
+        
+        if (product == null)
+            throw new ArgumentOutOfRangeException();
+
+        return product;
     }
 }

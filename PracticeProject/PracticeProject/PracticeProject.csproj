@@ -9,6 +9,8 @@
         <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,16 +21,8 @@
     <ItemGroup>
         <!-- Don't publish the SPA source files, but do show them in the project files list -->
         <Content Remove="$(SpaRoot)**" />
-        <Content Include="..\.dockerignore">
-          <Link>.dockerignore</Link>
-        </Content>
         <None Remove="$(SpaRoot)**" />
         <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="ClientApp\src\app\remove-product-dialog-material\" />
-      <Folder Include="Exceptions\" />
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -21,7 +21,7 @@ public class Product
         return HashCode.Combine(Id, Manufacturer, Name);
     }
     
-    [Key] public Guid Id { get; set; }
+    public Guid? Id { get; set; }
 
     [Required(ErrorMessage = "The Manufacturer field is required.")]
     [MaxLength(50)]

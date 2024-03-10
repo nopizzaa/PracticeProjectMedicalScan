@@ -1,9 +1,19 @@
-using static System.String;
-
 namespace PracticeProject.Models;
 
+/// <summary>
+/// Sorting parameters.
+/// </summary>
 public class SortingParameters
 {
-    public string Active { get; set; } = Empty;
-    public string Direction { get; set; } = Empty;
+    /// <summary>
+    /// Name of product property.
+    /// </summary>
+    /// <example>price</example>
+    public string Active { get; set; } = nameof(Product.Price);
+    
+    /// <summary>
+    /// Direction of sorting.
+    /// </summary>
+    /// <example>asc</example>
+    public string Direction { get; set; } = "asc";
 }

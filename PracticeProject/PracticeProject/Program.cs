@@ -6,7 +6,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // Add the OpenApi generator to the services collection
-builder.Services.AddOpenApiDocument();
+builder.Services.AddSwaggerDocument(config =>
+{
+    config.PostProcess = document =>
+    {
+        document.Info.Title = "PracticeProject";
+        document.Info.Version = "v1";
+        document.Info.Description = "A simple sample API.";
+    };
+});
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
@@ -36,6 +44,5 @@ app.MapControllerRoute(
     pattern: "{controller}/{action=Index}/{id?}");
 
 app.MapFallbackToFile("index.html");
-;
 
 app.Run();
