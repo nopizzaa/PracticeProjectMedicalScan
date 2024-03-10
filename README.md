@@ -61,6 +61,9 @@ Make sure you have the following installed on your machine:
 7. After you can start it by simply run the following command:
    ```bash
    npm start
+8. (optional) Run 'karma-jasmine' unit test with:
+   ```bash
+   ng test
 ## Accessing Swagger
 
 You can access the Swagger documentation for the API by navigating to the following URL:
