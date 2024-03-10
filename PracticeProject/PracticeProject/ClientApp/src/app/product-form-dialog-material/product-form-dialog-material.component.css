@@ -6,8 +6,8 @@
 
 .form-fields-full-width {
   width: 100%;
+}
 
-  textarea {
-    resize: vertical;
-  }
+textarea {
+  resize: vertical;
 }
