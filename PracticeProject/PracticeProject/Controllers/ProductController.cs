@@ -16,9 +16,16 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<Product> Get()
+    public IActionResult Get([FromQuery] SortingParameters sortingParameters)
     {
-        return _productRepository.GetAllProduct();
+        try
+        {
+            return Ok(_productRepository.GetAllProduct(sortingParameters));
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(400, $"Internal server error: {ex.Message}");
+        }
     }
 
     [HttpPost]
