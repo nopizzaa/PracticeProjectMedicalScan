@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -24,6 +24,9 @@ import {ProductService} from "../services/product.service";
 import {ProductDataSource} from "../services/product.dataSource";
 import {MatDialogModule} from "@angular/material/dialog";
 import {DialogDescriptionMaterialComponent} from "./dialog-description-material/dialog-description-material.component";
+import {ConfirmationDialogMaterialComponent} from "./confirmation-dialog-material/confirmation-dialog-material.component";
+import { ProductFormDialogMaterialComponent } from './product-form-dialog-material/product-form-dialog-material.component';
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -31,6 +34,8 @@ import {DialogDescriptionMaterialComponent} from "./dialog-description-material/
     NavMenuMaterialComponent,
     CatalogueMaterialComponent,
     DialogDescriptionMaterialComponent,
+    ConfirmationDialogMaterialComponent,
+    ProductFormDialogMaterialComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -53,6 +58,8 @@ import {DialogDescriptionMaterialComponent} from "./dialog-description-material/
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
+    MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [ProductService, ProductDataSource],
   bootstrap: [AppComponent]

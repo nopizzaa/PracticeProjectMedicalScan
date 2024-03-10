@@ -1,6 +1,6 @@
 <div class="catalogue-container">
   <div>
-    <button mat-raised-button class="catalogue-button">
+    <button mat-raised-button class="catalogue-button" (click)="openProductFormDialog(null)">
       Add data
     </button>
 
@@ -35,11 +35,11 @@
             <mat-icon>library_books</mat-icon>
           </button>
 
-          <button mat-icon-button (click)="editRow(element)">
+          <button mat-icon-button (click)="openProductFormDialog(element)">
             <mat-icon>edit</mat-icon>
           </button>
 
-          <button mat-icon-button (click)="deleteRow(element)">
+          <button mat-icon-button (click)="deleteRowWithConfirmation(element)">
             <mat-icon>delete</mat-icon>
           </button>
         </ng-container>

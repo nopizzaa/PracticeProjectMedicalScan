@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
 import {CollectionViewer, DataSource} from "@angular/cdk/collections";
-import {Product} from "../app/product";
 import {BehaviorSubject, Observable} from "rxjs";
 import {ProductService} from "./product.service";
 import { Sort } from '@angular/material/sort';
+import {Product} from "../app/types/product";
 
 @Injectable()
 export class ProductDataSource extends DataSource<Product> {

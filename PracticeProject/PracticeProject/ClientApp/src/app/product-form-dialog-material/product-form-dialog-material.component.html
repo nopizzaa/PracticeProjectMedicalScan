@@ -1,0 +1,41 @@
+<div class="form-fields">
+  <h1 mat-dialog-title>{{ data.id ? 'Edit Product' : 'Add New Product' }}</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="productForm" class="form-fields">
+      <mat-form-field class="form-fields-full-width">
+        <input matInput placeholder="Manufacturer" formControlName="manufacturer">
+        <mat-error *ngIf="productForm.controls['manufacturer'].hasError('required')">Name is required</mat-error>
+        <mat-error *ngIf="productForm.controls['manufacturer'].hasError('maxlength')">Manufacturer can have at most 50
+          characters
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-fields-full-width">
+        <input matInput placeholder="Name" formControlName="name">
+        <mat-error *ngIf="productForm.controls['name'].hasError('required')">Name is required</mat-error>
+        <mat-error *ngIf="productForm.controls['name'].hasError('maxlength')">Name can have at most 50 characters
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-fields-full-width">
+        <mat-label>Price</mat-label>
+        <input matInput placeholder="Price" formControlName="price" type="number">
+        <mat-error *ngIf="productForm.controls['price'].hasError('required')">Price is required</mat-error>
+        <mat-error *ngIf="productForm.controls['price'].hasError('min')">Price must be greater than 0</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-fields-full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+        <mat-error *ngIf="productForm.controls['description'].hasError('maxlength')">
+          Description can have at most 150 characters
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+    <button mat-button color="primary" [disabled]="!productForm.valid" (click)="onSaveClick()">Save</button>
+  </div>
+</div>
