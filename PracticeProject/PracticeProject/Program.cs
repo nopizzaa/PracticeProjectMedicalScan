@@ -1,3 +1,5 @@
+using PracticeProject.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +7,8 @@ builder.Services.AddControllersWithViews();
 
 // Add the OpenApi generator to the services collection
 builder.Services.AddOpenApiDocument();
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
